@@ -1,15 +1,5 @@
-version: '2'
+version: '3'
 services:
-    myapp:
-        build: .
-        container_name: "api3"
-        image: ap3:latest
-        ports: 
-            - "3001:3001"
-        depends_on:
-            - mongodb
-        networks: 
-            - all
     mongodb:
         image: mongo:latest
         container_name: "mongodb"
@@ -23,6 +13,19 @@ services:
         ports: 
             - "27017:27017"
         networks: 
+            - all    
+    myapp:
+        build: .
+        container_name: "api3"
+        image: ap3:latest
+        ports: 
+            - "3001:3001"
+        depends_on:
+            - mongodb
+        links:
+            - mongodb
+        networks: 
             - all
+    
 networks:
     all:

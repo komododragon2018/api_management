@@ -14,10 +14,10 @@ services:
             - "27017:27017"
         networks: 
             - all    
-    myapp:
-        build: .
-        container_name: "api3"
-        image: ap3:latest
+    api_backend:
+        build:
+            context: .
+            dockerfile: Dockerfile-backend-api
         ports: 
             - "3001:3001"
         depends_on:
@@ -26,6 +26,5 @@ services:
             - mongodb
         networks: 
             - all
-    
 networks:
     all:

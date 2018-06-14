@@ -2,7 +2,7 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "RESTful API Server",
-  "main": "/packages/backend/server.js",
+  "main": "/server.js",
   "author": "",
   "license": "ISC",
   "dependencies": {
@@ -12,7 +12,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node packages/backend/server.js"
+    "start": "node server.js"
   }  
 
 }

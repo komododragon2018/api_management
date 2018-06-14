@@ -8,6 +8,8 @@ services:
             - "3001:3001"
         depends_on:
             - mongodb
+        networks: 
+            - all
     mongodb:
         image: mongo:latest
         container_name: "mongodb"
@@ -15,7 +17,12 @@ services:
           - MONGO_DATA_DIR=/data/db
           - MONGO_LOG_DIR=/dev/null
           - AUTH=no
+          - MONGODB_URL="mongodb://mongo:27017/"
         volumes:
           - ./data/db:/data/db
         ports: 
             - "27017:27017"
+        networks: 
+            - all
+networks:
+    all:

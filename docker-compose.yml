@@ -20,11 +20,27 @@ services:
             dockerfile: Dockerfile-backend-api
         ports: 
             - "3001:3001"
+        expose:
+            - "3001"
         depends_on:
             - mongodb
         links:
             - mongodb
         networks: 
             - all
+    api_client:
+        build:
+            context: .
+            dockerfile: Dockerfile-client-api
+        ports: 
+            - "3000:3000"
+        expose:
+            - "3000"            
+        depends_on:
+            - api_backend
+        links:
+            - api_backend
+        networks: 
+            - all            
 networks:
     all:
